@@ -1,17 +1,17 @@
 def solution(numbers, target):
-    result = [0]
-    cnt = 0
+    global answer
+    answer = 0
+    dfs(0, 0, numbers, target)
+    return answer
 
-    for num in numbers:
-        temp = []
-
-        for res in result:
-            temp.append(res + num)
-            temp.append(res - num)
-
-        result = temp
+def dfs(index, total, numbers, target):
+    global answer
+    # 탈출 조건
+    if index == len(numbers):
+        if total == target:
+            answer += 1
+        return
     
-    for res in result:
-      if res == target:
-        cnt += 1
-    return cnt
+    # 현재 숫자를 더하거나 빼는 경우를 탐색
+    dfs(index + 1, total + numbers[index], numbers, target)
+    dfs(index + 1, total - numbers[index], numbers, target)
