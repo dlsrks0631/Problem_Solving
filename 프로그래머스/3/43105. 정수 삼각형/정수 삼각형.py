@@ -8,4 +8,4 @@ def solution(triangles):
             else:
                 triangles[i][j] = triangles[i][j] + max(triangles[i-1][j-1], triangles[i-1][j])
 
-    return max(triangles[len(triangles) - 1])
+    return max(triangles[-1])
